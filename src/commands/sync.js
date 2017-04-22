@@ -13,13 +13,10 @@ export default class SyncCommand extends Command {
       throw new CLIError('You don\'t have any projects to sync')
     }
     const promises = []
-    const syncRepo = async (project) => {
-      await this.spawn('git', ['fetch', '--all'], { stdio: 'inherit', cwd: project.path })
-    }
+    const syncRepo = project => this.spawn('git', ['fetch', '--all'], { stdio: 'inherit', cwd: project.path })
     projects.map((project) => {
       promises.push(syncRepo(project))
     })
-
     Promise.all(promises).then((results) => {
       console.log('results', results)
       return results
