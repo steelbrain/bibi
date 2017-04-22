@@ -2,6 +2,11 @@
 
 export type Project = {
   name: string,
-  user: string,
+  path: string,
+  owner: string,
+}
+
+export type Owner = {
+  name: string,
   path: string,
 }

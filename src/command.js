@@ -1,7 +1,10 @@
 /* @flow */
 
+import FS from 'sb-fs'
+import Path from 'path'
 import invariant from 'assert'
 import ChildProcess from 'child_process'
+import type { Owner, Project } from './types'
 
 export default class Command {
   name = ''
@@ -15,6 +18,37 @@ export default class Command {
   }
   callback() {
     throw new Error('You must implement a callback() method in your command')
+  }
+  async getOwners(): Promise<Array<Owner>> {
+    const owners = []
+    const entries = await FS.readdir(this.projectsRoot)
+    await Promise.all(entries.map(async (entry) => {
+      if (entry.slice(0, 1) === '.') return 1
+      const entryPath = Path.join(this.projectsRoot, entry)
+      const stat = await FS.lstat(entryPath)
+      if (stat.isDirectory()) {
+        owners.push({ path: entryPath, name: entry })
+      }
+      return 1
+    }))
+    return owners
+  }
+  async getProjects(givenOwners: ?Array<Owner> = null): Promise<Array<Project>> {
+    const owners = givenOwners || await this.getOwners()
+    const projects = []
+    await Promise.all(owners.map(async (owner) => {
+      const entries = await FS.readdir(owner.path)
+      return Promise.all(entries.map(async (entry) => {
+        if (entry.slice(0, 1) === '.') return 1
+        const entryPath = Path.join(owner.path, entry)
+        const stat = await FS.lstat(entryPath)
+        if (stat.isDirectory()) {
+          projects.push({ path: entryPath, name: entry, owner: owner.name })
+        }
+        return 1
+      }))
+    }))
+    return projects
   }
   async spawn(
     name: string,
