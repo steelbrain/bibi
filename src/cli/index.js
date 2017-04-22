@@ -3,6 +3,7 @@
 
 require('process-bootstrap')('sb-cli')
 
+const FS = require('fs')
 const command = require('sb-command')
 const untildify = require('untildify')
 
@@ -11,6 +12,18 @@ const manifest = require('../../package.json')
 
 const projectsRoot = untildify(process.env.SB_PROJECT_PATH || '~/Projects')
 const cli = new CLI(projectsRoot)
+
+let stats
+try {
+  stats = FS.statSync(projectsRoot)
+} catch (_) { /* No OP */ }
+
+if (!stats) {
+  FS.mkdirSync(projectsRoot)
+} else if (!stats.isDirectory()) {
+  console.error(`Projects root '${projectsRoot}' exists but is not a directory`)
+  process.exit(1)
+}
 
 command
   .version(manifest.version)
