@@ -1,9 +1,11 @@
 /* @flow */
 
+import SyncCommand from './sync'
 import ImportCommand from './import'
-import getProjectsRoot from './get-projects-root'
+import GetProjectsRootCommand from './get-projects-root'
 
 export default [
-  getProjectsRoot,
+  SyncCommand,
   ImportCommand,
+  GetProjectsRootCommand,
 ]
