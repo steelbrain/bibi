@@ -1,0 +1,29 @@
+{
+  "name": "sb-cli",
+  "main": "./lib/index.js",
+  "author": "steelbrain",
+  "readme": "./README.md",
+  "version": "0.0.0",
+  "description": "A repository management tool",
+  "repository": "https://github.com/steelbrain/sb-cli",
+  "license": "MIT",
+  "keywords": [
+    "cli",
+    "github"
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "build": "npm run clean; babel src --out-dir lib",
+    "watch": "npm run build -- -w",
+    "test": "(apm test) && (flow check) && (eslint . )"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-steelbrain": "^5.0.2",
+    "eslint-config-steelbrain": "^3.0.0",
+    "flow-bin": "^0.44.0",
+    "jasmine-fix": "^1.0.0",
+    "rimraf": "^2.6.1"
+  }
+}
