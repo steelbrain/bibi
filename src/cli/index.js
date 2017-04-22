@@ -34,4 +34,11 @@ cli.getCommands().forEach(function(entry) {
   command.command(entry.name, entry.description, (...params) => entry.callback.call(entry, ...params))
 })
 
-command.process()
+command.process().catch(function(error) {
+  if (error && error.name === 'CLIError') {
+    console.error('Error:', error.message)
+  } else {
+    console.error(error)
+  }
+  process.exitCode = 1
+})
