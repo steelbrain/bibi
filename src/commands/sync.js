@@ -9,7 +9,7 @@ export default class SyncCommand extends Command {
 
   async callback() {
     const projects = await this.getProjects()
-    if (!projects) {
+    if (!projects.length) {
       throw new CLIError('You don\'t have any projects to sync')
     }
     const promises = []
