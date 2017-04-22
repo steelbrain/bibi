@@ -17,7 +17,8 @@ export default class Command {
 
     this.projectsRoot = projectsRoot
   }
-  callback() {
+  // eslint-disable-next-line no-unused-vars
+  callback(...params: any) {
     throw new Error('You must implement a callback() method in your command')
   }
   matchProjects(projects: Array<Project>, queries: Array<string>): Array<Project> {

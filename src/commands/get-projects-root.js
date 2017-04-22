@@ -2,7 +2,7 @@
 
 import Command from '../command'
 
-export default class ExecCommand extends Command {
+export default class GetProjectsRootCommand extends Command {
   name = 'get-projects-root'
   description = 'Show the active projects root'
 
