@@ -3,6 +3,7 @@
 import FS from 'sb-fs'
 import Path from 'path'
 import invariant from 'assert'
+import multimatch from 'multimatch'
 import ChildProcess from 'child_process'
 import type { Owner, Project } from './types'
 
@@ -18,6 +19,9 @@ export default class Command {
   }
   callback() {
     throw new Error('You must implement a callback() method in your command')
+  }
+  matchProjects(projects: Array<Project>, queries: Array<string>): Array<Project> {
+    return projects.filter(project => multimatch([project.name, `${project.owner}/${project.name}`], queries).length)
   }
   async getOwners(): Promise<Array<Owner>> {
     const owners = []

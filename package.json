@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "git-url-parse": "^6.2.2",
+    "multimatch": "^2.1.0",
     "mv": "^2.1.1",
     "process-bootstrap": "^1.0.0",
     "sb-command": "^2.0.6",
