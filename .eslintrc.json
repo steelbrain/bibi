@@ -1,6 +1,6 @@
 {
   "extends": "steelbrain",
-  "rules": {
-
+  "globals": {
+    "Class": true
   }
 }
