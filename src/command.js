@@ -2,10 +2,11 @@
 
 import FS from 'sb-fs'
 import Path from 'path'
+import Listr from 'listr'
 import invariant from 'assert'
 import multimatch from 'multimatch'
 import ChildProcess from 'child_process'
-import type { Owner, Project } from './types'
+import type { Task, TaskOptions, Owner, Project } from './types'
 
 export default class Command {
   name = ''
@@ -20,6 +21,26 @@ export default class Command {
   // eslint-disable-next-line no-unused-vars
   callback(...params: any) {
     throw new Error('You must implement a callback() method in your command')
+  }
+  async tasks(
+    tasks: Array<Task>,
+    options: TaskOptions = {},
+  ): Promise<void> {
+    if (options.concurrent) {
+      const listr = new Listr(tasks.map(task => ({
+        title: task.title,
+        task: task.callback,
+      })), { concurrent: true })
+      await listr.run()
+    } else {
+      for (const task of tasks) {
+        const listr = new Listr([{
+          title: task.title,
+          task: task.callback,
+        }])
+        await listr.run()
+      }
+    }
   }
   matchProjects(projects: Array<Project>, queries: Array<string>): Array<Project> {
     return projects.filter(project => multimatch([project.name, `${project.owner}/${project.name}`], queries).length)
