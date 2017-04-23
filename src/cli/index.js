@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* @flow */
 
-require('process-bootstrap')('sb-cli')
+require('process-bootstrap')('bibi')
 
 const FS = require('fs')
 const command = require('sb-command')

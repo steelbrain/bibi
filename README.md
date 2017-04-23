@@ -1,27 +1,27 @@
-# SB CLI
+# Bibi
 
-`sb-cli` is my personal repository/Project management tool. It supports getting one or all repositories from github, syncing them and executing commands in them with ease.
+`bibi` is my personal repository/Project management tool. It supports getting one or all repositories from github, syncing them and executing commands in them with ease.
 
 ## Installation
 
 ```
-npm install -g sb-cli
-# sb-cli --help
+npm install -g bibi
+# bibi --help
 ```
 
 ## Usage
 
 ```
 # To get one repo
-sb-cli get steelbrain/linter
+bibi get steelbrain/linter
 # To get all repos of a user
-sb-cli get-all steelbrain
+bibi get-all steelbrain
 # To execute a command in all repos by a user
-sb-cli exec --scope "steelbrain/*" -- pwd
+bibi exec --scope "steelbrain/*" -- pwd
 # To sync all repos
-sb-cli sync --scope "*"
+bibi sync --scope "*"
 # To sync specific repos
-sb-cli sync --scope "steelbrain/linter*"
+bibi sync --scope "steelbrain/linter*"
 ```
 
 ## License

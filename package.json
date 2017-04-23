@@ -1,14 +1,14 @@
 {
-  "name": "sb-cli",
+  "name": "bibi",
   "main": "lib/index.js",
   "bin": {
-    "sb-cli": "./lib/cli/index.js"
+    "bibi": "./lib/cli/index.js"
   },
   "author": "steelbrain",
   "readme": "./README.md",
   "version": "0.0.1",
   "description": "A repository management tool",
-  "repository": "https://github.com/steelbrain/sb-cli",
+  "repository": "https://github.com/steelbrain/bibi",
   "license": "MIT",
   "keywords": [
     "cli",
