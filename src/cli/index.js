@@ -26,6 +26,7 @@ if (!stats) {
   process.exit(1)
 }
 require('sudo-block')()
+require('update-notifier')({ pkg: manifest }).notify()
 
 // Initialization
 command
