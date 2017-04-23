@@ -6,7 +6,7 @@
   },
   "author": "steelbrain",
   "readme": "./README.md",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A repository management tool",
   "repository": "https://github.com/steelbrain/sb-cli",
   "license": "MIT",
