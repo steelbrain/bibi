@@ -13,6 +13,7 @@ const manifest = require('../../package.json')
 const projectsRoot = untildify(process.env.SB_PROJECT_PATH || '~/Projects')
 const cli = new CLI(projectsRoot)
 
+// Validations
 let stats
 try {
   stats = FS.statSync(projectsRoot)
@@ -24,7 +25,9 @@ if (!stats) {
   console.error(`Projects root '${projectsRoot}' exists but is not a directory`)
   process.exit(1)
 }
+require('sudo-block')()
 
+// Initialization
 command
   .version(manifest.version)
   .description('A repository management tool')
