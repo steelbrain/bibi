@@ -1,5 +1,6 @@
 {
   "name": "sb-cli",
+  "main": "lib/index.js",
   "bin": {
     "sb-cli": "./lib/cli/index.js"
   },
