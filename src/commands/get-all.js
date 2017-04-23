@@ -3,7 +3,7 @@
 import FS from 'sb-fs'
 import Path from 'path'
 import Command from '../command'
-import { getAllPages, CLIError } from '../common'
+import { getGHAllPages, CLIError } from '../common'
 
 export default class GetAllCommand extends Command {
   name = 'get-all <username>'
@@ -12,7 +12,7 @@ export default class GetAllCommand extends Command {
   async callback(options: Object, username: string) {
     let repositories
     try {
-      repositories = await getAllPages(`https://api.github.com/users/${username}/repos`)
+      repositories = await getGHAllPages(`https://api.github.com/users/${username}/repos`)
     } catch (_) {
       throw new CLIError(`Failed to retrieve repositories for '${username}'`)
     }
