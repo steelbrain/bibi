@@ -9,8 +9,9 @@ import ChildProcess from 'child_process'
 import type { Task, TaskOptions, Owner, Project } from './types'
 
 export default class Command {
-  name = ''
-  description = ''
+  name: string = ''
+  description:string = ''
+  options: Array<{ title: string, description: string, default?: any }> = []
 
   projectsRoot: string;
   constructor(projectsRoot: string) {
@@ -21,6 +22,22 @@ export default class Command {
   // eslint-disable-next-line no-unused-vars
   callback(...params: any) {
     throw new Error('You must implement a callback() method in your command')
+  }
+  matchProjects(projects: Array<Project>, queries: Array<string>): Array<Project> {
+    return projects.filter(project => multimatch([project.name, `${project.owner}/${project.name}`], queries).length)
+  }
+  getCurrentProject(): ?Project {
+    const currentDirectory = process.cwd()
+    if (!currentDirectory.toLowerCase().startsWith(this.projectsRoot.toLowerCase())) return null
+    const chunks = currentDirectory.slice(this.projectsRoot.length + 1).split(Path.sep)
+    if (chunks.length === 2) {
+      return {
+        path: currentDirectory,
+        name: chunks[1],
+        owner: chunks[0],
+      }
+    }
+    return null
   }
   async tasks(
     tasks: Array<Task>,
@@ -41,9 +58,6 @@ export default class Command {
         await listr.run()
       }
     }
-  }
-  matchProjects(projects: Array<Project>, queries: Array<string>): Array<Project> {
-    return projects.filter(project => multimatch([project.name, `${project.owner}/${project.name}`], queries).length)
   }
   async getOwners(): Promise<Array<Owner>> {
     const owners = []

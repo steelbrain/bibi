@@ -32,10 +32,13 @@ require('update-notifier')({ pkg: manifest }).notify()
 command
   .version(manifest.version)
   .description('A repository management tool')
-  .option('--scope', 'Scope for execution (eg $user, $user/$repo, */$repo, $user/some-*)')
+  .option('--scope [scope]', 'Scope for execution (eg $user, $user/$repo, */$repo, $user/some-*)')
 
 cli.getCommands().forEach(function(entry) {
   command.command(entry.name, entry.description, (...params) => entry.callback.call(entry, ...params))
+  entry.options.forEach((option) => {
+    command.option(option.title, option.description, option.default)
+  })
 })
 
 command.process().catch(function(error) {
