@@ -2,6 +2,7 @@
 
 export type Project = {
   name: string,
+  slug: string,
   path: string,
   owner: string,
 }
@@ -22,6 +23,5 @@ export type Task = {
 }
 
 export type TaskOptions = {
-  title?: string,
   concurrent?: boolean,
 }

@@ -32,9 +32,10 @@ export default class Command {
     const chunks = currentDirectory.slice(this.projectsRoot.length + 1).split(Path.sep)
     if (chunks.length === 2) {
       return {
-        path: currentDirectory,
         name: chunks[1],
         owner: chunks[0],
+        slug: `${chunks[0]}/${chunks[1]}`,
+        path: currentDirectory,
       }
     }
     return null
@@ -83,7 +84,12 @@ export default class Command {
         const entryPath = Path.join(owner.path, entry)
         const stat = await FS.lstat(entryPath)
         if (stat.isDirectory()) {
-          projects.push({ path: entryPath, name: entry, owner: owner.name })
+          projects.push({
+            name: entry,
+            slug: `${owner.name}/${entry}`,
+            path: entryPath,
+            owner: owner.name,
+          })
         }
         return 1
       }))
