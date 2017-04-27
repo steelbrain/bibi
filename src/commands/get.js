@@ -5,7 +5,7 @@ import Path from 'path'
 import Command from '../command'
 import { CLIError } from '../common'
 
-const REGEXP_EXTRACTION = /^([0-9a-z-_.]+)\/([0-9a-z-_.]+)/
+const REGEXP_EXTRACTION = /^([0-9a-z-_.]+)\/([0-9a-z-_.]+)/i
 
 export default class GetCommand extends Command {
   name = 'get <path>'
