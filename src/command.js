@@ -45,19 +45,31 @@ export default class Command {
     options: TaskOptions = {},
   ): Promise<void> {
     if (options.concurrent) {
-      const listr = new Listr(tasks.map(task => ({
+      // eslint-disable-next-line no-underscore-dangle
+      this._tasksConcurrent(tasks, options)
+    } else {
+      // eslint-disable-next-line no-underscore-dangle
+      this._tasksSeries(tasks, options)
+    }
+  }
+  async _tasksConcurrent(givenTasks: Array<Task>, options: TaskOptions): Promise<void> {
+    const tasks = givenTasks.slice()
+    while (tasks.length) {
+      const batch = tasks.splice(0, options.concurrent)
+      const listr = new Listr(batch.map(task => ({
         title: task.title,
         task: task.callback,
       })), { concurrent: true })
       await listr.run()
-    } else {
-      for (const task of tasks) {
-        const listr = new Listr([{
-          title: task.title,
-          task: task.callback,
-        }])
-        await listr.run()
-      }
+    }
+  }
+  async _tasksSeries(tasks: Array<Task>): Promise<void> {
+    for (const task of tasks) {
+      const listr = new Listr([{
+        title: task.title,
+        task: task.callback,
+      }])
+      await listr.run()
     }
   }
   async getOwners(): Promise<Array<Owner>> {

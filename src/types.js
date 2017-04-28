@@ -23,5 +23,5 @@ export type Task = {
 }
 
 export type TaskOptions = {
-  concurrent?: boolean,
+  concurrent?: number,
 }
