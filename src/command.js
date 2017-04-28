@@ -46,10 +46,10 @@ export default class Command {
   ): Promise<void> {
     if (options.concurrent) {
       // eslint-disable-next-line no-underscore-dangle
-      this._tasksConcurrent(tasks, options)
+      await this._tasksConcurrent(tasks, options)
     } else {
       // eslint-disable-next-line no-underscore-dangle
-      this._tasksSeries(tasks, options)
+      await this._tasksSeries(tasks, options)
     }
   }
   async _tasksConcurrent(givenTasks: Array<Task>, options: TaskOptions): Promise<void> {

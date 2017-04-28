@@ -30,6 +30,8 @@ export default class SyncCommand extends Command {
           throw new CLIError(`Error syncing '${project.slug}'`)
         }
       },
-    })))
+    })), {
+      concurrent: 5,
+    })
   }
 }
