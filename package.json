@@ -21,7 +21,7 @@
     "test": "(apm test) && (flow check) && (eslint . )"
   },
   "dependencies": {
-    "git-url-parse": "^6.2.2",
+    "git-url-parse": "^7.0.0",
     "got": "^6.7.1",
     "listr": "^0.12.0",
     "multimatch": "^2.1.0",
