@@ -30,7 +30,7 @@
     "sb-command": "^2.0.6",
     "sb-fs": "^3.0.0",
     "sb-promisify": "^2.0.1",
-    "sudo-block": "^1.2.0",
+    "sudo-block": "^2.0.0",
     "untildify": "^3.0.2",
     "update-notifier": "^2.1.0"
   },
