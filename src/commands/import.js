@@ -9,6 +9,7 @@ import Command from '../command'
 import { CLIError } from '../common'
 
 const mv = promisify(require('mv'))
+const mkdirp = promisify(require('mkdirp'))
 
 export default class ImportCommand extends Command {
   name = 'import'
@@ -37,6 +38,7 @@ export default class ImportCommand extends Command {
     if (projectPathStats) {
       throw new CLIError(`Target directory '${projectPath}' already exists`)
     }
+    await mkdirp(Path.join(this.projectsRoot, parsedRemoteUrl.owner))
     await mv(currentDirectory, projectPath)
     console.log(`Moved to '${projectPath}' successfully 🎉`)
   }
