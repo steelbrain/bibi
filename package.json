@@ -36,8 +36,8 @@
     "update-notifier": "^2.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-preset-steelbrain": "^5.0.2",
+    "babel-cli": "^6.26.0",
+    "babel-preset-steelbrain": "^5.0.3",
     "eslint-config-steelbrain": "^3.0.0",
     "flow-bin": "^0.46.0",
     "jasmine-fix": "^1.0.0",
