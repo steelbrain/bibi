@@ -21,7 +21,9 @@ export default class GetCommand extends Command {
     let projectPathStats
     try {
       projectPathStats = await FS.stat(projectPath)
-    } catch (_) { /* No Op */ }
+    } catch (_) {
+      /* No Op */
+    }
     if (projectPathStats) {
       throw new CLIError(`Target directory '${projectPath}' already exists`)
     }

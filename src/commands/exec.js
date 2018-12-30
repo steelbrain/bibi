@@ -9,7 +9,11 @@ export default class ExecCommand extends Command {
   description = 'Execute the given command in active project or defined scope'
   options = [
     { title: '--parallel', description: 'Run tasks in parallel', default: false },
-    { title: '--parallel-limit [limit]', description: 'How many tasks to run in parallel at any given time (default: Unlimited)', default: Infinity },
+    {
+      title: '--parallel-limit [limit]',
+      description: 'How many tasks to run in parallel at any given time (default: Unlimited)',
+      default: Infinity,
+    },
   ]
 
   async callback(options: Object, command: Array<string>) {

@@ -17,7 +17,9 @@ const cli = new CLI(projectsRoot)
 let stats
 try {
   stats = FS.statSync(projectsRoot)
-} catch (_) { /* No OP */ }
+} catch (_) {
+  /* No OP */
+}
 
 if (!stats) {
   FS.mkdirSync(projectsRoot)
@@ -36,7 +38,7 @@ command
 
 cli.getCommands().forEach(function(entry) {
   command.command(entry.name, entry.description, (...params) => entry.callback.call(entry, ...params))
-  entry.options.forEach((option) => {
+  entry.options.forEach(option => {
     command.option(option.title, option.description, option.default)
   })
 })

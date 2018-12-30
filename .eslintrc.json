@@ -1,6 +1,6 @@
 {
   "extends": "steelbrain",
-  "globals": {
-    "Class": true
+  "rules": {
+    "no-await-in-loop": "off"
   }
 }

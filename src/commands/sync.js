@@ -19,17 +19,19 @@ export default class SyncCommand extends Command {
       projects.push(currentProject)
     }
 
-    await this.tasks(projects.map(project => ({
-      title: `Syncing ${project.slug}`,
-      callback: async () => {
-        const { code: exitCode } = await this.spawn('git', ['fetch', '--prune', '--all'], {
-          cwd: project.path,
-          stdio: 'ignore',
-        })
-        if (exitCode !== 0) {
-          throw new CLIError(`Error syncing '${project.slug}'`)
-        }
-      },
-    })))
+    await this.tasks(
+      projects.map(project => ({
+        title: `Syncing ${project.slug}`,
+        callback: async () => {
+          const { code: exitCode } = await this.spawn('git', ['fetch', '--prune', '--all'], {
+            cwd: project.path,
+            stdio: 'ignore',
+          })
+          if (exitCode !== 0) {
+            throw new CLIError(`Error syncing '${project.slug}'`)
+          }
+        },
+      })),
+    )
   }
 }
