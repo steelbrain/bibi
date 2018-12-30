@@ -6,7 +6,7 @@
   },
   "author": "steelbrain",
   "readme": "./README.md",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "A repository management tool",
   "repository": "https://github.com/steelbrain/bibi",
   "license": "MIT",
