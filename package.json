@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "clean": "rimraf lib",
+    "prepare": "npm run build",
     "build": "npm run clean; babel src --out-dir lib",
     "watch": "npm run build -- -w",
     "test": "(apm test) && (flow check) && (eslint . )"
