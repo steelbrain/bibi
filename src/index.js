@@ -5,8 +5,8 @@ import Commands from './commands'
 import type CommandType from './command'
 
 class CLI {
-  commands: Map<string, CommandType>;
-  projectsRoot: string;
+  commands: Map<string, CommandType>
+  projectsRoot: string
   constructor(projectsRoot: string) {
     invariant(projectsRoot && typeof projectsRoot === 'string', 'projectsRoot must be a valid string')
 

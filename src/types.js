@@ -14,12 +14,12 @@ export type Owner = {
 
 export type Task = {
   title: string,
-  callback: ((
+  callback: (
     context: Object,
     task: {
-      skip: ((reason: string) => void),
+      skip: (reason: string) => void,
     },
-  ) => any),
+  ) => any,
 }
 
 export type TaskOptions = {
