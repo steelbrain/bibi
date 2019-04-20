@@ -1,3 +1,7 @@
+## 0.2.0
+
+- Upgrade all dependencies
+
 ## 0.1.0
 
 - Remove import command
