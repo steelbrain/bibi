@@ -28,7 +28,6 @@
     "git-url-parse": "^11.1.1",
     "got": "^9.5.0",
     "listr": "^0.14.3",
-    "mkdirp": "^0.5.1",
     "multimatch": "^3.0.0",
     "process-bootstrap": "^1.0.0",
     "sb-command": "^2.0.6",
