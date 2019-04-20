@@ -19,7 +19,10 @@
     "prepare": "npm run build",
     "build": "sb-babel-cli src -o lib",
     "watch": "npm run build -- -w",
-    "test": "(flow check) && (eslint . )"
+    "lint:flow": "flow check",
+    "lint:eslint": "eslint .",
+    "lint": "npm run lint:flow && npm run lint:eslint",
+    "test": "exit 1"
   },
   "dependencies": {
     "git-url-parse": "^11.1.1",
