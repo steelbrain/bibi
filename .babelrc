@@ -1,3 +1,11 @@
 {
-  "presets": ["steelbrain"]
+  "presets": [
+    ["@babel/env", {
+      "targets": { "node": "8" }
+    }],
+    "@babel/flow"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties"
+  ]
 }
