@@ -17,28 +17,35 @@
   "scripts": {
     "clean": "rimraf lib",
     "prepare": "npm run build",
-    "build": "npm run clean; babel src --out-dir lib",
+    "build": "sb-babel-cli src -o lib",
     "watch": "npm run build -- -w",
-    "test": "(flow check) && (eslint . )"
+    "lint:flow": "flow check",
+    "lint:eslint": "eslint .",
+    "lint": "npm run lint:flow && npm run lint:eslint",
+    "test": "exit 1"
   },
   "dependencies": {
     "git-url-parse": "^11.1.1",
     "got": "^9.5.0",
     "listr": "^0.14.3",
-    "mkdirp": "^0.5.1",
     "multimatch": "^3.0.0",
     "process-bootstrap": "^1.0.0",
     "sb-command": "^2.0.6",
     "sb-fs": "^3.0.0",
-    "sudo-block": "^2.0.0",
+    "sudo-block": "^3.0.0",
     "untildify": "^3.0.3",
     "update-notifier": "^2.5.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-steelbrain": "^5.0.3",
-    "eslint-config-steelbrain": "^6.0.0",
-    "flow-bin": "^0.91.0",
-    "rimraf": "^2.6.2"
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-flow": "^7.0.0",
+    "eslint-config-steelbrain": "^7.0.0",
+    "flow-bin": "^0.97.0",
+    "sb-babel-cli": "^2.0.0"
+  },
+  "engines": {
+    "node": ">= 8"
   }
 }
