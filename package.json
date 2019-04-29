@@ -33,7 +33,7 @@
     "sb-command": "^2.0.6",
     "sb-fs": "^3.0.0",
     "sudo-block": "^3.0.0",
-    "untildify": "^3.0.3",
+    "untildify": "^4.0.0",
     "update-notifier": "^2.5.0"
   },
   "devDependencies": {
