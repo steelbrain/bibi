@@ -34,7 +34,7 @@
     "sb-fs": "^4.0.0",
     "sudo-block": "^3.0.0",
     "untildify": "^4.0.0",
-    "update-notifier": "^2.5.0"
+    "update-notifier": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
